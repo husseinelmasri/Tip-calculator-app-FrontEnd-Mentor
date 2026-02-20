@@ -1,0 +1,298 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Space Mono', monospace;
+}
+
+:root {
+  --green-900: hsl(183, 100%, 15%);
+  --green-400: hsl(172, 67%, 45%);
+  --grey-500: hsl(186, 14%, 43%);
+  --grey-400: hsl(184, 14%, 56%);
+  --grey-200: hsl(185, 41%, 84%);
+  --grey-50: hsl(189, 47%, 97%);
+  --white: hsl(0, 100%, 100%);
+  --error: #e17457;
+}
+
+body {
+  background-color: var(--grey-200);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--white);
+  width: 100%;
+  max-width: 920px;
+  border-radius: 25px;
+  padding: 32px;
+  gap: 32px;
+  margin-bottom: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    flex-direction: row;
+    padding: 32px;
+  }
+
+  .calculate_area {
+    width: 50%;
+  }
+
+  .calculated_area {
+    width: 50%;
+  }
+}
+
+/* Left side - Input area */
+.calculate_area {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* Bill and People sections */
+.bill,
+.number_people {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+label {
+  color: var(--grey-500);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.label-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.error-message {
+  color: var(--error);
+  font-size: 14px;
+  font-weight: 700;
+  display: none;
+}
+
+.number_people.error .error-message {
+  display: block;
+}
+
+.number_people.error input {
+  border-color: var(--error) !important;
+}
+
+/* Input wrapper styles - FIXED: No padding flicker */
+.input-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.input-wrapper i {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--grey-400);
+  font-size: 16px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.input-wrapper input {
+  width: 100%;
+  padding: 12px 20px 12px 40px;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  background-color: var(--grey-50);
+  text-align: right;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--green-900);
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+.input-wrapper input:hover {
+  border-color: var(--green-400);
+}
+
+.input-wrapper input:focus {
+  outline: none;
+  border-color: var(--green-400);
+}
+
+.input-wrapper input::placeholder {
+  color: var(--grey-400);
+  opacity: 0.5;
+}
+
+/* Tip section */
+.tip_section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* FIXED: Grid makes all buttons the same width */
+.tip_btns {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+@media screen and (min-width: 500px) {
+  .tip_btns {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* FIXED: All buttons now exactly the same size */
+.tip_btn {
+  background-color: var(--green-900);
+  color: var(--white);
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 20px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  width: 100%;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.tip_btn:hover {
+  background-color: var(--green-400);
+  color: var(--green-900);
+}
+
+.tip_btn.active {
+  background-color: var(--green-400);
+  color: var(--green-900);
+}
+
+/* FIXED: Custom input now matches button exactly */
+.custom-input {
+  background-color: var(--grey-50);
+  border: 2px solid transparent;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+  color: var(--green-900);
+  cursor: pointer;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.custom-input:hover {
+  border-color: var(--green-400);
+}
+
+.custom-input:focus {
+  outline: none;
+  border-color: var(--green-400);
+}
+
+.custom-input::placeholder {
+  color: var(--grey-500);
+  font-size: 16px;
+}
+
+/* Right side - Results area */
+.calculated_area {
+  background-color: var(--green-900);
+  border-radius: 15px;
+  padding: 32px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.results {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.result-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.result-label p {
+  color: var(--white);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.result-label span {
+  color: var(--grey-400);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.result-value {
+  color: var(--green-400);
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+@media screen and (min-width: 768px) {
+  .result-value {
+    font-size: 40px;
+  }
+}
+
+.reset-btn {
+  background-color: var(--green-400);
+  border: none;
+  border-radius: 8px;
+  padding: 14px;
+  color: var(--green-900);
+  font-size: 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s;
+  opacity: 0.2;
+}
+
+.reset-btn:hover {
+  background-color: var(--grey-200);
+}
+
+.reset-btn.active {
+  opacity: 1;
+}
+
+/* Attribution */
+.attribution {
+  font-size: 11px;
+  text-align: center;
+  color: var(--grey-500);
+  margin-top: 10px;
+}
+
+.attribution a {
+  color: var(--green-900);
+}
