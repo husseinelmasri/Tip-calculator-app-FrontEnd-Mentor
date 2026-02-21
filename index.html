@@ -20,7 +20,7 @@
         <label for="bill">Bill</label>
         <div class="input-wrapper">
           <i class="fa-solid fa-dollar-sign"></i>
-          <input type="number" id="bill" placeholder="0">
+          <input type="number" id="bill" placeholder="0" min="0" step="0.01">
         </div>
       </section>
 
@@ -32,7 +32,7 @@
           <button class="tip_btn" data-tip="15">15%</button>
           <button class="tip_btn" data-tip="25">25%</button>
           <button class="tip_btn" data-tip="50">50%</button>
-          <input type="number" placeholder="Custom" id="custom_tip" class="custom-input">
+          <input type="number" placeholder="Custom" id="custom_tip" class="custom-input" min="0" step="1">
         </div>
       </section>
 
@@ -43,7 +43,7 @@
         </div>
         <div class="input-wrapper">
           <i class="fa-solid fa-user"></i>
-          <input type="number" id="people" placeholder="0" value="1">
+          <input type="number" id="people" placeholder="0" value="1" min="1">
         </div>
       </section>
     </div>
